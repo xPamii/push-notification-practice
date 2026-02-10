@@ -3,6 +3,7 @@ package com.xpamii.push_notification.service;
 import android.app.NotificationChannel;
 import android.app.PendingIntent;
 import android.content.Intent;
+import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.core.app.NotificationCompat;
@@ -13,6 +14,13 @@ import com.xpamii.push_notification.R;
 import com.xpamii.push_notification.activity.MainActivity;
 
 public class MessagingService extends FirebaseMessagingService {
+
+    private static final String TAG = MessagingService.class.getSimpleName();
+
+    @Override
+    public void onNewToken(@NonNull String token) {
+        Log.d(TAG, "Token: " + token);
+    }
 
     @Override
     public void onMessageReceived(@NonNull RemoteMessage message) {
